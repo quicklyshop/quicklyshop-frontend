@@ -1,102 +1,65 @@
-import React from "react";
-import Sidebar from "react-sidebar";
+import React, {Component} from 'react';
+import './App.css';
+import logo from './logo.svg';
+import 'react-datepicker/dist/react-datepicker.css';
+import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
+import { Login } from './component/Login';
 
-const mql = window.matchMedia(`(min-width: 800px)`);
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      sidebarDocked: mql.matches,
-      sidebarOpen: false
-    };
+localStorage.setItem('user',"Camila");
+localStorage.setItem('password',"Camila123");
+localStorage.setItem("isLoggedIn",false);
 
-    this.mediaQueryChanged = this.mediaQueryChanged.bind(this);
-    this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
+class App extends Component {
 
-    const styles = {
-      root: {
-        position: "absolute",
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        overflow: "hidden"
-      },
-      sidebar: {
-        zIndex: 2,
-        position: "absolute",
-        top: 0,
-        bottom: 0,
-        transition: "transform .3s ease-out",
-        WebkitTransition: "-webkit-transform .3s ease-out",
-        willChange: "transform",
-        overflowY: "auto"
-      },
-      content: {
-        position: "absolute",
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        overflowY: "auto",
-        WebkitOverflowScrolling: "touch",
-        transition: "left .3s ease-out, right .3s ease-out"
-      },
-      overlay: {
-        zIndex: 1,
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        opacity: 0,
-        visibility: "hidden",
-        transition: "opacity .3s ease-out, visibility .3s ease-out",
-        backgroundColor: "rgba(0,0,0,.3)"
-      },
-      dragHandle: {
-        zIndex: 1,
-        position: "fixed",
-        top: 0,
-        bottom: 0
-      }
-    };
-  }
+   state = {
+       isLoggedIn: JSON.parse(localStorage.getItem("isLoggedIn")),
+       user:"",
+       password:""
+   };
 
-  componentWillMount() {
-    console.log('llama funcion');
-    mql.addListener(this.mediaQueryChanged);
-  }
+    
 
-  componentWillUnmount() {
-    console.log('llama funcion');
-    mql.removeListener(this.mediaQueryChanged);
-  }
-
-  onSetSidebarOpen(open) {
-    console.log('llama funcion');
-    this.setState({ sidebarOpen: open });
-  }
-
-  mediaQueryChanged() {
-    console.log('llama funcion');
-    this.setState({ sidebarDocked: mql.matches, sidebarOpen: false });
-  }
-
-  render() {
-    return (
-      <Sidebar
-        sidebar={<b>Nuestro contenido</b>}
-        open={this.state.sidebarOpen}
-        docked={this.state.sidebarDocked}
-        onSetOpen={this.onSetSidebarOpen}
-        styles={this.styles}
-      >
-        <b>Contenido en la pagina</b>
-      </Sidebar>
+    LoginView = () => (
+        <Login
+            handleLogin={this.handleLogin}
+            handleUserChange={this.handleUserChange}
+            handlePasswordChange={this.handlePasswordChange}
+        />
     );
+
+
+    render() {
+            return(
+                <Router>
+                        <div>
+                            <Route exact path="/" component={this.LoginView} />
+                        </div>       
+                </Router>                
+            );
+                
+      }
+
+    handleLogin = event =>{
+      if(this.state.user === localStorage.getItem("user") && this.state.password===localStorage.getItem("password")){
+          this.setState({ isLoggedIn: true });
+          localStorage.setItem("isLoggedIn",true);
+          
+      }
+    }
+
+    handleUserChange = event =>{
+        this.setState({user: event.target.value});
+    }
+
+    handlePasswordChange = event =>{
+        this.setState({password: event.target.value});
+    }
+
   }
-}
+
+    
+  
+
 
 export default App;
