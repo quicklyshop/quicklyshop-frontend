@@ -44,23 +44,22 @@ export class Login extends React.Component{
                                     onChange = {this.props.handlePasswordChange}
                                 />
                             </FormControl>
-                            <div>
-                            <FormControl>
+
+                             <FormControl margin="normal" required fullWidth>
                                 <Button
+                                    align="center"
                                     type="submit"
                                     fullWidth
                                     variant="raised"
                                     color="primary"
                                     className="submit"
+                                    align="center"
                                     onClick={this.props.handleLogin}
                                 >
                                     Login
                                 </Button>
-                            </FormControl>
-                            </div>
-                
-                            <div>
-                            <FormControl>
+                              </FormControl>
+                              <FormControl margin="normal" required fullWidth>
                                 <Button
                                     type="submit"
                                     fullWidth
@@ -68,12 +67,11 @@ export class Login extends React.Component{
                                     color="primary"
                                     className="submit"
                                     onClick={this.props.handleLogin}
-                                >
-                                    Registrarse
-                                </Button>
-                            </FormControl>
-                            </div>
-                            
+                                 >
+                                   Registrarse
+                                 </Button>
+                               </FormControl>
+
                         </form>
                     </Paper>
                 </main>

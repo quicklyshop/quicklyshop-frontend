@@ -4,7 +4,9 @@ import logo from './logo.svg';
 import 'react-datepicker/dist/react-datepicker.css';
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
 import { Login } from './component/Login';
-
+import { Register} from './component/Register';
+import {Profile} from './Profile';
+import Avatar from '@material-ui/core/Avatar';
 
 localStorage.setItem('user',"Camila");
 localStorage.setItem('password',"Camila123");
@@ -18,7 +20,19 @@ class App extends Component {
        password:""
    };
 
+
+    ProfileView = () => (
+        <Profile />
+    );
     
+
+    RegisterView = () => (
+        <Register
+            handleLogin={this.handleLogin}
+            handleUserChange={this.handleUserChange}
+            handlePasswordChange={this.handlePasswordChange}
+        />
+    );
 
     LoginView = () => (
         <Login
@@ -30,13 +44,24 @@ class App extends Component {
 
 
     render() {
-            return(
-                <Router>
+            if(this.state.isLoggedIn){
+                return(
+                    <Router>
+                        <div>
+                            <Route exact path="/" component={this.ProfileView} />
+                        </div>
+                     </Router>
+                     );
+            }else{
+                return(
+                     <Router>
                         <div>
                             <Route exact path="/" component={this.LoginView} />
-                        </div>       
-                </Router>                
-            );
+                        </div>
+                     </Router>
+                 );
+            }
+
                 
       }
 
@@ -54,6 +79,10 @@ class App extends Component {
 
     handlePasswordChange = event =>{
         this.setState({password: event.target.value});
+    }
+
+    handleRegister =event => {
+        //TODO
     }
 
   }
