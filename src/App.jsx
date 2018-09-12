@@ -4,9 +4,14 @@ import logo from './logo.svg';
 import 'react-datepicker/dist/react-datepicker.css';
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
 import { Login } from './component/Login';
+<<<<<<< HEAD:src/App.js
 import { Register} from './component/Register';
 import {Profile} from './Profile';
 import Avatar from '@material-ui/core/Avatar';
+=======
+import { Main } from './component/view/Main';
+
+>>>>>>> bb540b18311c2bf3f6e67c7dac6dd4724204dc68:src/App.jsx
 
 localStorage.setItem('user',"Camila");
 localStorage.setItem('password',"Camila123");
@@ -56,12 +61,20 @@ class App extends Component {
                 return(
                      <Router>
                         <div>
+<<<<<<< HEAD:src/App.js
                             <Route exact path="/" component={this.LoginView} />
                         </div>
                      </Router>
                  );
             }
 
+=======
+                            {/* <Route exact path="/" component={this.LoginView} /> */}
+                            <Route exact path="/" component={Main} />
+                        </div>
+                </Router>
+            );
+>>>>>>> bb540b18311c2bf3f6e67c7dac6dd4724204dc68:src/App.jsx
                 
       }
 
@@ -86,9 +99,5 @@ class App extends Component {
     }
 
   }
-
-    
-  
-
 
 export default App;

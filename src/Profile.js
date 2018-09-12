@@ -58,7 +58,7 @@ export class Profile extends React.Component {
 
                                 <Avatar>
                                     alt="C"
-                                    
+
 
                                 </Avatar>
                                 <FormControl margin="normal" required fullWidth>
