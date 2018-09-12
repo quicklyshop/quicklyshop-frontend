@@ -1,0 +1,30 @@
+
+#menu {
+    background-color: #89c34b;
+    height: 30px;
+    padding: 5px;
+    display:flex;
+    flex-direction:row;
+    color:white;
+    text-align:center;
+}
+
+#logout {
+    position:absolute;
+    color:white;
+}
+
+#open-menu {
+    position:absolute;
+    color:white;
+}
+
+#spacer {
+    flex:1;
+}
+
+#logo {
+    margin-left:40%;
+    margin-top:4px;
+
+}
