@@ -4,6 +4,7 @@ import logo from './logo.svg';
 import 'react-datepicker/dist/react-datepicker.css';
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
 import { Login } from './component/Login';
+import { Main } from './component/view/Main';
 
 
 localStorage.setItem('user',"Camila");
@@ -33,9 +34,10 @@ class App extends Component {
             return(
                 <Router>
                         <div>
-                            <Route exact path="/" component={this.LoginView} />
-                        </div>       
-                </Router>                
+                            {/* <Route exact path="/" component={this.LoginView} /> */}
+                            <Route exact path="/" component={Main} />
+                        </div>
+                </Router>
             );
                 
       }
@@ -57,9 +59,5 @@ class App extends Component {
     }
 
   }
-
-    
-  
-
 
 export default App;
