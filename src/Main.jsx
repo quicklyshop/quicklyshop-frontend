@@ -47,8 +47,9 @@ export class Main extends React.Component {
                 <Button onClick={() => this.onSetSidebarOpen(true)}>
                   <div id="open-menu"><Icon icon={list2}/></div>
                 </Button>
-                <div id="logo">QuicklyShop<Icon icon={shoppingCart}/></div>
-                <span id="spacer"></span>
+                <Button>
+                  <div id="logo">QuicklyShop<Icon icon={shoppingCart}/></div>
+                </Button>
                 <Button>
                   <div id="logout"><Icon icon={signOut}/></div>
                 </Button>
