@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
+import logo from './imgResources/logo.svg';
 import './css/App.css';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Login } from "./Login";

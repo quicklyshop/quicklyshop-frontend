@@ -6,8 +6,8 @@ import {list2} from 'react-icons-kit/icomoon/list2';
 import {shoppingCart} from 'react-icons-kit/fa/shoppingCart';
 import {signOut} from 'react-icons-kit/fa/signOut';
 import Icon from 'react-icons-kit';
-import './Main.css';
-import { Profile } from '../../Profile';
+import './css/Main.css';
+import { Profile } from './Profile';
 
 export class Main extends React.Component {
 

@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import './css/App.css';
-import logo from './logo.svg';
+import logo from './imgResources/logo.svg';
 import 'react-datepicker/dist/react-datepicker.css';
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
 import { Login } from './Login';
 import { Register} from './Register';
 import {Profile} from './Profile';
 import Avatar from '@material-ui/core/Avatar';
-import { Main } from './component/view/Main';
+import { Main } from './Main';
 
 localStorage.setItem('user',"Camila");
 localStorage.setItem('password',"Camila123");
