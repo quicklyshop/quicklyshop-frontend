@@ -1,26 +1,16 @@
 import React from 'react';
-import logo from './imgResources/logo.svg';
 import './css/App.css';
 import 'react-datepicker/dist/react-datepicker.css';
-import { Login } from "./Login";
 import Button from "@material-ui/core/Button";
-import AddIcon from '@material-ui/icons/Add';
-import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import Avatar from '@material-ui/core/Avatar';
-import LockIcon from '@material-ui/icons/LockOutlined';
-import classNames from 'classnames';
-import { withStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import FormControl from '@material-ui/core/FormControl';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
 import Typography from '@material-ui/core/Typography';
 
 
 
-
-    const styles = {
+const styles = {
       row: {
         display: 'flex',
         justifyContent: 'center',

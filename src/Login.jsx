@@ -53,7 +53,6 @@ export class Login extends React.Component{
                                     variant="raised"
                                     color="primary"
                                     className="submit"
-                                    align="center"
                                     onClick={this.props.handleLogin}
                                 >
                                     Login
