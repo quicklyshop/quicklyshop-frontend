@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import './App.css';
+import './css/App.css';
 import logo from './logo.svg';
 import 'react-datepicker/dist/react-datepicker.css';
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
-import { Login } from './component/Login';
-import { Register} from './component/Register';
+import { Login } from './Login';
+import { Register} from './Register';
 import {Profile} from './Profile';
 import Avatar from '@material-ui/core/Avatar';
 import { Main } from './component/view/Main';
@@ -26,7 +26,7 @@ class App extends Component {
     ProfileView = () => (
         <Profile />
     );
-    
+
 
     RegisterView = () => (
         <Register
@@ -64,14 +64,14 @@ class App extends Component {
                         </div>
                 </Router>
             );
-                
+
       }
 
     const handleLogin = event =>{
       if(this.state.user === localStorage.getItem("user") && this.state.password===localStorage.getItem("password")){
           this.setState({ isLoggedIn: true });
           localStorage.setItem("isLoggedIn",true);
-          
+
       }
     }
 

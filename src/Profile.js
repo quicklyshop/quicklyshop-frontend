@@ -1,8 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './css/App.css';
 import 'react-datepicker/dist/react-datepicker.css';
-import { Login } from "./component/Login";
+import { Login } from "./Login";
 import Button from "@material-ui/core/Button";
 import AddIcon from '@material-ui/icons/Add';
 import TextField from '@material-ui/core/TextField';
