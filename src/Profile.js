@@ -7,22 +7,9 @@ import Avatar from '@material-ui/core/Avatar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import FormControl from '@material-ui/core/FormControl';
 import Typography from '@material-ui/core/Typography';
-
-
-
-const styles = {
-      row: {
-        display: 'flex',
-        justifyContent: 'center',
-      },
-      avatar: {
-        margin: 10,
-      },
-      bigAvatar: {
-        width: 60,
-        height: 60,
-      },
-    };
+import {Main} from './Main';
+import './css/profile.css';
+import {StyleSheet, Text, View, Image} from 'react-native';
 
 export class Profile extends React.Component {
 
@@ -35,37 +22,60 @@ export class Profile extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-
-
     render() {
         return (
                 <React.Fragment>
-                    <CssBaseline />
-                        <main className="layout">
-                            <Paper className="paper">
-                                <Typography variant="headline">Bienvenido</Typography>
+                <View id="container">
+                  <View id="header">
+                    <View id="headerContent">
+                        <Image id="avatar"
+                          source={{uri: 'https://bootdey.com/img/Content/avatar/avatar6.png'}}/>
 
+                        <Text id="name">John Doe </Text>
+                        <Text id="userInfo">jhonnydoe@mail.com </Text>
+                        <Text id="userInfo">Florida </Text>
+                    </View>
+                  </View>
 
-                                <Avatar>
-                                    alt="C"
+                  <View id="body">
+                    <View id="item">
+                      <View id="iconContent">
+                        <Image id="icon" source={{uri: 'https://png.icons8.com/home/win8/50/ffffff'}}/>
+                      </View>
+                      <View id="infoContent">
+                        <Text id="info">Home</Text>
+                      </View>
+                    </View>
 
+                    <View id="item">
+                      <View id="iconContent">
+                        <Image id="icon" source={{uri: 'https://png.icons8.com/settings/win8/50/ffffff'}}/>
+                      </View>
+                      <View id="infoContent">
+                        <Text id="info">Settings</Text>
+                      </View>
+                    </View>
 
-                                </Avatar>
-                                <FormControl margin="normal" required fullWidth>
-                                <Button
-                                    type="submit"
-                                    fullWidth
-                                    variant="raised"
-                                    color="primary"
-                                    className="submit"
-                                    onClick={this.props.handleLogin}
-                                >
-                                Entrar
-                                </Button>
-                                </FormControl>
+                    <View id="item">
+                      <View id="iconContent">
+                        <Image id="icon" source={{uri: 'https://png.icons8.com/news/win8/50/ffffff'}}/>
+                      </View>
+                      <View id="infoContent">
+                        <Text id="info">News</Text>
+                      </View>
+                    </View>
 
-                            </Paper>
-                        </main>
+                    <View id="item">
+                      <View id="iconContent">
+                        <Image id="icon" source={{uri: 'https://png.icons8.com/shopping-basket/ios11/50/ffffff'}}/>
+                      </View>
+                      <View id="infoContent">
+                        <Text id="info">Shop</Text>
+                      </View>
+                    </View>
+
+                  </View>
+              </View>
                 </React.Fragment>
 
         );
