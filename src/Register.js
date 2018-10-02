@@ -6,6 +6,7 @@ import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import {Main} from './Main';
 import './css/Register.css';
 
 
@@ -14,6 +15,7 @@ export class Register extends React.Component{
     render(){
         return (
             <React.Fragment>
+                <Main />
                 <CssBaseline />
                 <main className="layout">
                     <Paper className="paper">

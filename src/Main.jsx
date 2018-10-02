@@ -53,7 +53,6 @@ export class Main extends React.Component {
                   <div id="logout"><Icon icon={signOut}/></div>
                 </Button>
             </div>
-            <Profile></Profile>
           </Sidebar>
         );
     }
