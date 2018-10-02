@@ -105,6 +105,7 @@ export class Register extends React.Component{
                         </form>
                     </Paper>
                 </main>
+                <br/><br/><br/><br/><br/><br/>
             </React.Fragment>
 
 
