@@ -8,9 +8,27 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import {Main} from './Main';
 import './css/Register.css';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import Avatar from '@material-ui/core/Avatar';
+import AssignmentIcon from '@material-ui/icons/Assignment';
 
+const theme = createMuiTheme({
+    palette: {
+      primary: { main: "#89c34b" },
+    },
+    overrides: {
+        MuiButton: {
+          raisedPrimary: {
+            color: 'white',
+          },
+        },
+      }
+  });
 
 export class Register extends React.Component{
+
+    
+
 
     render(){
         return (
@@ -19,6 +37,9 @@ export class Register extends React.Component{
                 <CssBaseline />
                 <main className="layout">
                     <Paper className="paper">
+                        <Avatar className="avatar">
+                            <AssignmentIcon />
+                        </Avatar>
                         <Typography variant="headline">Register</Typography>
                         <form className="form">
                             <FormControl margin="normal" required fullWidth>
@@ -89,7 +110,8 @@ export class Register extends React.Component{
                                     onChange = {this.props.handlePasswordChange}
                                 />
                              </FormControl>
-                             <div>
+                             <FormControl margin="normal" required fullWidth>
+                             <MuiThemeProvider theme={theme}>
                                 <Button
                                     align="center"
                                     type="submit"
@@ -101,7 +123,8 @@ export class Register extends React.Component{
                                 >
                                     Submit
                                 </Button>
-                              </div>
+                                </MuiThemeProvider>
+                                </FormControl>
                         </form>
                     </Paper>
                 </main>
