@@ -13,7 +13,7 @@ import {Main} from './Main';
 import { MainLogin } from './MainLogin';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
-
+ 
 const theme = createMuiTheme({
     palette: {
       primary: { main: "#89c34b" },
@@ -44,10 +44,11 @@ export class Login extends React.Component{
 
     
 
-    render(){
-
+    render(
+        
+    ){
         return (
-            <div className="body">
+            
             <React.Fragment>
                 <MainLogin />
                 <CssBaseline />
@@ -117,7 +118,7 @@ export class Login extends React.Component{
                                </FormControl>
                 </main>
             </React.Fragment>
-    </div>
+            
         );
     }
 

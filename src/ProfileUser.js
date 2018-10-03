@@ -10,6 +10,8 @@ import Typography from '@material-ui/core/Typography';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import {Main} from './Main';
 import './css/profile.css';
+import ReactDOM from 'react-dom'
+
 
 const theme = createMuiTheme({
     palette: {
@@ -33,8 +35,10 @@ export class ProfileUser extends React.Component {
         this.handlePriorityChange = this.handlePriorityChange.bind(this);
         this.handleDateChange = this.handleDateChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        
     }
 
+    
     render() {
         return (
                 <React.Fragment>
@@ -42,7 +46,6 @@ export class ProfileUser extends React.Component {
                    <CssBaseline />
                        <main className="layout">
                            <Paper className="paper">
-
                                <Avatar googleId="118096717852922241760" size="250" round={true} />
                                <br/>
                                <Typography variant="headline">John Doe</Typography>
