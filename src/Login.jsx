@@ -43,7 +43,7 @@ export class Login extends React.Component{
                         <Typography variant="headline">Iniciar Sesion</Typography>
                         <form className="form">
                             <FormControl margin="normal" required fullWidth>
-                                <InputLabel htmlFor="email">Email Address</InputLabel>
+                                <InputLabel htmlFor="email">Usuario</InputLabel>
                                 <Input
                                 id="email"
                                 name="email"
