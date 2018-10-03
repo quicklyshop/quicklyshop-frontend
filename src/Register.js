@@ -30,7 +30,6 @@ export class Register extends React.Component{
     constructor(props){
       super(props);
       this.state = {
-        axiosInstance :null,
         name : '',
         lastName : '',
         email : '',
@@ -39,8 +38,8 @@ export class Register extends React.Component{
         password : '',
         passwordConfirmation : ''
       };
-      this.handlePasswordChange = this.handlePasswordChange.bind(this);
-      this.handlePasswordChange = this.handlePasswordChange.bind(this);
+
+      this.handleRegister = this.handleRegister.bind(this);
     }
 
   handleNameChange = event => {
@@ -85,7 +84,26 @@ export class Register extends React.Component{
       });
   }
 
-  handleRegister 
+  handleRegister() {
+
+    /*TODO: Agregar los estados que le faltan a los usuarios, telfono, direccion*/
+    axios.post('http://localhost:8080/user/login', [{
+      email : this.state.email,
+      firstname : this.state.name,
+      lastname : this.state.lastName,
+      username : this.state.email
+    },{
+      username : this.state.email,
+      password : this.state.password
+    }])
+    .then(function (response) {
+      console.log(response.data);
+    })
+    .catch(funtion (error) {
+      console.log(error);
+    });
+
+  }
 
 
     render(){
