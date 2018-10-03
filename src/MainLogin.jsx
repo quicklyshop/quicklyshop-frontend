@@ -6,6 +6,7 @@ import {shoppingCart} from 'react-icons-kit/fa/shoppingCart';
 import Icon from 'react-icons-kit';
 import './css/Main.css';
 
+
 export class MainLogin extends React.Component {
 
     constructor(props) {
@@ -42,8 +43,11 @@ export class MainLogin extends React.Component {
             >
             <div id="menu">
                 <div></div>
-                <Button>
-                  <div id="logo">QuicklyShop<Icon icon={shoppingCart}/></div>
+                <Button title="QuicklyShop">
+                  <div id="logo">
+                  Quickly Shop
+                  <Icon icon={shoppingCart}/>
+                  </div>
                 </Button>
                 <div></div>
             </div>
