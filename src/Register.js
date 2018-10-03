@@ -99,7 +99,7 @@ export class Register extends React.Component{
     .then(function (response) {
       console.log(response.data);
     })
-    .catch(funtion (error) {
+    .catch(function (error) {
       console.log(error);
     });
 
