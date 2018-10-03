@@ -6,27 +6,128 @@ import { Login } from './Login';
 import { Register} from './Register';
 import {Profile} from './Profile';
 import { Main } from './Main';
-import authentication from './Authentication';
+import axios from 'axios';
+
 
 localStorage.setItem('user',"Camila");
 localStorage.setItem('password',"Camila123");
 localStorage.setItem("isLoggedIn",false);
 
 class App extends Component {
+    constructor(props) {
+		super(props);
 
+		const token = localStorage.getItem('userToken');
 
-   state = {
-       isLoggedIn: JSON.parse(localStorage.getItem("isLoggedIn")),
-       user:"",
-       password:""
-   };
+		this.state = {
+			axiosInstance: null,
+			user: '',
+			password: '',
+			token: Object.is(token, undefined) ? '' : token,
+			isLoggedIn: typeof token === 'string' && token.length > 0
+		};
 
+		this.handleLogin = this.handleLogin.bind(this);
+		this.askForToken = this.askForToken.bind(this);
+		this.validateAndStoreToken = this.validateAndStoreToken.bind(this);
+		this.createAxiosInstance = this.createAxiosInstance.bind(this);
+		this.validToken = this.validToken.bind(this);
+	}
 
-    ProfileView = () => (
-        <Profile />
+	componentDidMount() {
+		if (this.validToken()) {
+			this.createAxiosInstance();
+		}
+	}
+
+	validToken() {
+		const tok = this.state.token;
+		console.log(tok);
+		return tok !== null && tok.length > 0;
+	}
+
+	createAxiosInstance() {
+		console.log('creating axios instance');
+
+		const axiosIns = axios.create({
+			baseURL: 'http://localhost:8080/api',
+			timeout: 1000,
+			headers: { 'authorization': 'Bearer ' + this.state.token }
+		});
+
+		this.setState({ axiosInstance: axiosIns });
+	}
+
+	askForToken() {
+		const _this = this;
+
+		axios.post('http://localhost:8080/user/login', {
+			username: this.state.user,
+			password: this.state.password
+		})
+			.then(function (response) {
+				console.log(response.data);
+				_this.validateAndStoreToken(response.data);
+			})
+			.catch(function (error) {
+				console.log(error);
+				_this.setState({ 
+					isLoggedIn: false,
+					axiosInstance: null 
+				});
+			});
+	}
+
+	validateAndStoreToken(tokenJson) {
+		console.log('validating token in json', tokenJson);
+		if (tokenJson !== undefined && tokenJson.hasOwnProperty('accessToken')) {
+			this.setState({ 
+				isLoggedIn: true,
+				token: tokenJson['accessToken']
+			 });
+			localStorage.setItem('userToken', tokenJson['accessToken']);
+			this.createAxiosInstance();
+		} else {
+			this.setState({ 
+				isLoggedIn: false,
+				axiosInstance: null 
+			});
+		}
+	}
+
+	handleLogin() {
+		this.askForToken();
+		console.log('Actual', this.state.user, this.state.password);
+	}
+
+	handleUserChange = (event) => {
+		event.preventDefault();
+		// console.log('user', event.target.value);
+		this.setState({ user: event.target.value });
+	}
+
+	handlePasswordChange = (event) => {
+		event.preventDefault();
+		// console.log('password', event.target.value);
+		this.setState({ password: event.target.value });
+	}
+
+	LoginView = () => (
+		<Login
+			onUserChange={this.handleUserChange}
+			onPasswordChange={this.handlePasswordChange}
+			onLogin={this.handleLogin}
+			isLoggedIn={this.state.isLoggedIn}
+		/>
+	);
+
+	MainView = () => (
+		<Main
+			isLoggedIn={this.state.isLoggedIn}
+			axios={this.state.axiosInstance}
+		/>
     );
-
-
+    
     RegisterView = () => (
         <Register
             handleLogin={this.handleLogin}
@@ -35,44 +136,17 @@ class App extends Component {
         />
     );
 
-    LoginView = () => (
-        <Login
-            handleLogin={this.handleLogin}
-            handleUserChange={this.handleUserChange}
-            handlePasswordChange={this.handlePasswordChange}
-        />
-    );
-
-
     render() {
         return(
             <Router>
                 <div>
                     <Route exact path="/" component={this.LoginView} />
-                    <Route exact path="/home" component={Main} />
+                    <Route exact path="/home" component={this.MainView} />
                     <Route exact path="/register" component={this.RegisterView} />
                 </div>
             </Router>
         );
 
-    const handleLogin = event =>{
-        this.setState({ isLoggedIn: true });
-        localStorage.setItem("isLoggedIn",true);
-        authentication.authenticate(this.state.user,this.state.password);
-    }
-
-    const handleUserChange = event =>{
-        this.setState({user: event.target.value});
-        alert(this.state);
-    }
-
-    const handlePasswordChange = event =>{
-        this.setState({password: event.target.value});
-    }
-
-    const handleRegister =event => {
-        //TODO
-    }
 
   }
 }
