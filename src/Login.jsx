@@ -9,6 +9,8 @@ import LockIcon from '@material-ui/icons/LockOutlined';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import './css/Login.css';
+import {Main} from './Main';
+import { MainLogin } from './MainLogin';
 
 
 export class Login extends React.Component{
@@ -16,6 +18,7 @@ export class Login extends React.Component{
     render(){
         return (
             <React.Fragment>
+                <MainLogin />
                 <CssBaseline />
                 <main className="layout">
                     <Paper className="paper">
