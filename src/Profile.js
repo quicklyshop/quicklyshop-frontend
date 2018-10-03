@@ -3,26 +3,12 @@ import './css/App.css';
 import 'react-datepicker/dist/react-datepicker.css';
 import Button from "@material-ui/core/Button";
 import Paper from '@material-ui/core/Paper';
-import Avatar from '@material-ui/core/Avatar';
+import Avatar from 'react-avatar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import FormControl from '@material-ui/core/FormControl';
 import Typography from '@material-ui/core/Typography';
-
-
-
-const styles = {
-      row: {
-        display: 'flex',
-        justifyContent: 'center',
-      },
-      avatar: {
-        margin: 10,
-      },
-      bigAvatar: {
-        width: 60,
-        height: 60,
-      },
-    };
+import {Main} from './Main';
+import './css/profile.css';
 
 export class Profile extends React.Component {
 
@@ -35,37 +21,44 @@ export class Profile extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-
-
     render() {
         return (
                 <React.Fragment>
-                    <CssBaseline />
-                        <main className="layout">
-                            <Paper className="paper">
-                                <Typography variant="headline">Bienvenido</Typography>
+                <Main/>
+                   <CssBaseline />
+                       <main className="layout">
+                           <Paper className="paper">
+                               <Typography variant="headline">Bienvenido</Typography>
 
 
-                                <Avatar>
-                                    alt="C"
+                               <Avatar googleId="118096717852922241760" size="250" round={true} />
 
+                               <FormControl margin="normal" required fullWidth>
+                               <Button
+                                   type="submit"
+                                   fullWidth
+                                   variant="raised"
+                                   color="primary"
+                                   className="submit"
+                                   onClick={this.props.handleLogin}
+                               >
+                               Entrar
+                               </Button>
+                               </FormControl>
 
-                                </Avatar>
-                                <FormControl margin="normal" required fullWidth>
-                                <Button
-                                    type="submit"
-                                    fullWidth
-                                    variant="raised"
-                                    color="primary"
-                                    className="submit"
-                                    onClick={this.props.handleLogin}
-                                >
-                                Entrar
-                                </Button>
-                                </FormControl>
-
-                            </Paper>
-                        </main>
+                           </Paper>
+                           <br/>
+                           <Button
+                               type="submit"
+                               fullWidth
+                               variant="raised"
+                               color="primary"
+                               className="submit"
+                               onClick={this.props.handleLogin}
+                           >
+                           otra cosa
+                           </Button>
+                       </main>
                 </React.Fragment>
 
         );

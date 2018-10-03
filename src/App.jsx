@@ -5,13 +5,8 @@ import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
 import { Login } from './Login';
 import { Register} from './Register';
 import {Profile} from './Profile';
-import { Main } from './Main';
+import { Main } from './Main';  
 import axios from 'axios';
-
-
-localStorage.setItem('user',"Camila");
-localStorage.setItem('password',"Camila123");
-localStorage.setItem("isLoggedIn",false);
 
 class App extends Component {
     constructor(props) {
@@ -102,13 +97,13 @@ class App extends Component {
 
 	handleUserChange = (event) => {
 		event.preventDefault();
-		// console.log('user', event.target.value);
+		console.log('user', event.target.value);
 		this.setState({ user: event.target.value });
 	}
 
 	handlePasswordChange = (event) => {
 		event.preventDefault();
-		// console.log('password', event.target.value);
+		console.log('password', event.target.value);
 		this.setState({ password: event.target.value });
 	}
 
@@ -137,16 +132,27 @@ class App extends Component {
     );
 
     render() {
-        return(
-            <Router>
-                <div>
-                    <Route exact path="/" component={this.LoginView} />
-                    <Route exact path="/home" component={this.MainView} />
-                    <Route exact path="/register" component={this.RegisterView} />
-                </div>
-            </Router>
-        );
+            if(this.state.isLoggedIn){
+                return(
+                    <Router>
+                        <div>
+                            <Route exact path="/register" component={this.RegisterView} />
+                        </div>
+                     </Router>
+                     );
+            }else{
+                return(
+                     <Router>
+                        <div>
+                            <Route exact path="/login" component={this.LoginView} />
+                            <Route exact path="/" component={Main} />
+                            <Route exact path="/register" component={this.RegisterView} />
+                            <Route exact path="/profile" component={this.ProfileView} />
+                        </div>
+                </Router>
+            );
 
+      }
 
   }
 }

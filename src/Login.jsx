@@ -12,7 +12,7 @@ import './css/Login.css';
 import {Main} from './Main';
 import { MainLogin } from './MainLogin';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-//import {Authentication}from './Authentication';
+
 
 const theme = createMuiTheme({
     palette: {
@@ -27,8 +27,6 @@ const theme = createMuiTheme({
       }
   });
 
-
-
 export class Login extends React.Component{
     constructor(props) {
     super(props);
@@ -40,6 +38,8 @@ export class Login extends React.Component{
 		console.log('evento:', event);
 		this.props.onLogin();
 	}
+
+    
 
     
 
@@ -62,7 +62,7 @@ export class Login extends React.Component{
                                 name="email"
                                 autoComplete="email"
                                 autoFocus
-                                onChange = {this.props.handleUserChange}
+                                onChange = {this.props.onUserChange}
                                 />
                             </FormControl>
                             <FormControl margin="normal" required fullWidth>
@@ -72,7 +72,7 @@ export class Login extends React.Component{
                                     type="password"
                                     id="password"
                                     autoComplete="current-password"
-                                    onChange = {this.props.handlePasswordChange}
+                                    onChange = {this.props.onPasswordChange}
                                 />
                             </FormControl>
 
@@ -112,6 +112,7 @@ export class Login extends React.Component{
 
         );
     }
+
 
 
 }
