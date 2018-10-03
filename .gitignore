@@ -547,3 +547,4 @@ $RECYCLE.BIN/
 
 
 # End of https://www.gitignore.io/api/reactnative,linux,macos,windows,node,emacs,java,intellij,netbeans,eclipse
+package-lock.json

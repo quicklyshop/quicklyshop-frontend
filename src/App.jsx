@@ -6,6 +6,7 @@ import { Login } from './Login';
 import { Register} from './Register';
 import {Profile} from './Profile';
 import { Main } from './Main';
+import authentication from './Authentication';
 
 localStorage.setItem('user',"Camila");
 localStorage.setItem('password',"Camila123");
@@ -57,7 +58,7 @@ class App extends Component {
                      <Router>
                         <div>
                             <Route exact path="/login" component={this.LoginView} />
-                            <Route exact path="/" component={Main} />
+                            <Route e	both modified:   package-lock.jsoxact path="/" component={Main} />
                             <Route exact path="/register" component={this.RegisterView} />
                             <Route exact path="/profile" component={this.ProfileView} />
                         </div>
@@ -67,15 +68,14 @@ class App extends Component {
       }
 
     const handleLogin = event =>{
-      if(this.state.user === localStorage.getItem("user") && this.state.password===localStorage.getItem("password")){
-          this.setState({ isLoggedIn: true });
-          localStorage.setItem("isLoggedIn",true);
-
-      }
+        this.setState({ isLoggedIn: true });
+        localStorage.setItem("isLoggedIn",true);
+        authentication.authenticate(this.state.user,this.state.password);
     }
 
     const handleUserChange = event =>{
         this.setState({user: event.target.value});
+        alert(this.state);
     }
 
     const handlePasswordChange = event =>{
@@ -87,6 +87,6 @@ class App extends Component {
     }
 
   }
-  }
+}
 
 export default App;
