@@ -3,13 +3,12 @@ import './css/App.css';
 import 'react-datepicker/dist/react-datepicker.css';
 import Button from "@material-ui/core/Button";
 import Paper from '@material-ui/core/Paper';
-import Avatar from '@material-ui/core/Avatar';
+import Avatar from 'react-avatar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import FormControl from '@material-ui/core/FormControl';
 import Typography from '@material-ui/core/Typography';
 import {Main} from './Main';
 import './css/profile.css';
-import {StyleSheet, Text, View, Image} from 'react-native';
 
 export class Profile extends React.Component {
 
@@ -25,57 +24,41 @@ export class Profile extends React.Component {
     render() {
         return (
                 <React.Fragment>
-                <View id="container">
-                  <View id="header">
-                    <View id="headerContent">
-                        <Image id="avatar"
-                          source={{uri: 'https://bootdey.com/img/Content/avatar/avatar6.png'}}/>
+                <Main/>
+                   <CssBaseline />
+                       <main className="layout">
+                           <Paper className="paper">
+                               <Typography variant="headline">Bienvenido</Typography>
 
-                        <Text id="name">John Doe </Text>
-                        <Text id="userInfo">jhonnydoe@mail.com </Text>
-                        <Text id="userInfo">Florida </Text>
-                    </View>
-                  </View>
 
-                  <View id="body">
-                    <View id="item">
-                      <View id="iconContent">
-                        <Image id="icon" source={{uri: 'https://png.icons8.com/home/win8/50/ffffff'}}/>
-                      </View>
-                      <View id="infoContent">
-                        <Text id="info">Home</Text>
-                      </View>
-                    </View>
+                               <Avatar googleId="118096717852922241760" size="250" round={true} />
 
-                    <View id="item">
-                      <View id="iconContent">
-                        <Image id="icon" source={{uri: 'https://png.icons8.com/settings/win8/50/ffffff'}}/>
-                      </View>
-                      <View id="infoContent">
-                        <Text id="info">Settings</Text>
-                      </View>
-                    </View>
+                               <FormControl margin="normal" required fullWidth>
+                               <Button
+                                   type="submit"
+                                   fullWidth
+                                   variant="raised"
+                                   color="primary"
+                                   className="submit"
+                                   onClick={this.props.handleLogin}
+                               >
+                               Entrar
+                               </Button>
+                               </FormControl>
 
-                    <View id="item">
-                      <View id="iconContent">
-                        <Image id="icon" source={{uri: 'https://png.icons8.com/news/win8/50/ffffff'}}/>
-                      </View>
-                      <View id="infoContent">
-                        <Text id="info">News</Text>
-                      </View>
-                    </View>
-
-                    <View id="item">
-                      <View id="iconContent">
-                        <Image id="icon" source={{uri: 'https://png.icons8.com/shopping-basket/ios11/50/ffffff'}}/>
-                      </View>
-                      <View id="infoContent">
-                        <Text id="info">Shop</Text>
-                      </View>
-                    </View>
-
-                  </View>
-              </View>
+                           </Paper>
+                           <br/>
+                           <Button
+                               type="submit"
+                               fullWidth
+                               variant="raised"
+                               color="primary"
+                               className="submit"
+                               onClick={this.props.handleLogin}
+                           >
+                           otra cosa
+                           </Button>
+                       </main>
                 </React.Fragment>
 
         );
