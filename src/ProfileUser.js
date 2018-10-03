@@ -7,10 +7,24 @@ import Avatar from 'react-avatar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import FormControl from '@material-ui/core/FormControl';
 import Typography from '@material-ui/core/Typography';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import {Main} from './Main';
 import './css/profile.css';
 
-export class Profile extends React.Component {
+const theme = createMuiTheme({
+    palette: {
+      primary: { main: "#89c34b" },
+    },
+    overrides: {
+        MuiButton: {
+          raisedPrimary: {
+            color: 'white',
+          },
+        },
+      }
+  });
+
+export class ProfileUser extends React.Component {
 
     constructor(props) {
         super(props);
@@ -28,12 +42,29 @@ export class Profile extends React.Component {
                    <CssBaseline />
                        <main className="layout">
                            <Paper className="paper">
-                               <Typography variant="headline">Bienvenido</Typography>
-
 
                                <Avatar googleId="118096717852922241760" size="250" round={true} />
+                               <br/>
+                               <Typography variant="headline">John Doe</Typography>
 
                                <FormControl margin="normal" required fullWidth>
+                               <MuiThemeProvider theme={theme}>
+                                   <Button
+                                       type="submit"
+                                       fullWidth
+                                       variant="raised"
+                                       color="primary"
+                                       className="submit"
+                                       onClick={this.props.handleLogin}
+                                   >
+                                   Editar Perfil
+                                   </Button>
+                                </MuiThemeProvider>
+                               </FormControl>
+
+                           </Paper>
+                           <br/>
+                           <MuiThemeProvider theme={theme}>
                                <Button
                                    type="submit"
                                    fullWidth
@@ -42,22 +73,9 @@ export class Profile extends React.Component {
                                    className="submit"
                                    onClick={this.props.handleLogin}
                                >
-                               Entrar
+                               Registro de Compras
                                </Button>
-                               </FormControl>
-
-                           </Paper>
-                           <br/>
-                           <Button
-                               type="submit"
-                               fullWidth
-                               variant="raised"
-                               color="primary"
-                               className="submit"
-                               onClick={this.props.handleLogin}
-                           >
-                           otra cosa
-                           </Button>
+                          </MuiThemeProvider>
                        </main>
                 </React.Fragment>
 

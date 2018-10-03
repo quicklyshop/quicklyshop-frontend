@@ -4,7 +4,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
 import { Login } from './Login';
 import { Register} from './Register';
-import {Profile} from './Profile';
+import {ProfileUser} from './ProfileUser';
 import { Main } from './Main';  
 import axios from 'axios';
 
@@ -116,11 +116,8 @@ class App extends Component {
 		/>
 	);
 
-	MainView = () => (
-		<Main
-			isLoggedIn={this.state.isLoggedIn}
-			axios={this.state.axiosInstance}
-		/>
+    ProfileUserView = () => (
+        <ProfileUser />
     );
     
     RegisterView = () => (
@@ -144,10 +141,10 @@ class App extends Component {
                 return(
                      <Router>
                         <div>
-                            <Route exact path="/login" component={this.LoginView} />
-                            <Route exact path="/" component={Main} />
+
+                            <Route exact path="/" component={this.LoginView} />
                             <Route exact path="/register" component={this.RegisterView} />
-                            <Route exact path="/profile" component={this.ProfileView} />
+                            <Route exact path="/profileusr" component={this.ProfileUserView} />
                         </div>
                 </Router>
             );
