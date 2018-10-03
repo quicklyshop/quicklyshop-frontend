@@ -27,6 +27,7 @@ const theme = createMuiTheme({
       }
   });
 
+
 export class Login extends React.Component{
     constructor(props) {
     super(props);
@@ -44,7 +45,9 @@ export class Login extends React.Component{
     
 
     render(){
+
         return (
+            <div className="body">
             <React.Fragment>
                 <MainLogin />
                 <CssBaseline />
@@ -114,8 +117,7 @@ export class Login extends React.Component{
                                </FormControl>
                 </main>
             </React.Fragment>
-
-
+    </div>
         );
     }
 
