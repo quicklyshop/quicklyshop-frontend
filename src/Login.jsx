@@ -81,6 +81,7 @@ export class Login extends React.Component{
     }
 
     handleUserChange = event => {
+        alert(event.target.value);
         this.setState({
             user: event.target.value
         });

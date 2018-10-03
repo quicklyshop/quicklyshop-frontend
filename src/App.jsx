@@ -6,6 +6,7 @@ import { Login } from './Login';
 import { Register} from './Register';
 import {Profile} from './Profile';
 import { Main } from './Main';
+import authentication from './Authentication';
 
 localStorage.setItem('user',"Camila");
 localStorage.setItem('password',"Camila123");
@@ -44,37 +45,25 @@ class App extends Component {
 
 
     render() {
-            if(this.state.isLoggedIn){
-                return(
-                    <Router>
-                        <div>
-                            <Route exact path="/register" component={this.RegisterView} />
-                        </div>
-                     </Router>
-                     );
-            }else{
-                return(
-                     <Router>
-                        <div>
-                            <Route exact path="/login" component={this.LoginView} />
-                            <Route exact path="/" component={Main} />
-                            <Route exact path="/register" component={this.RegisterView} />
-                        </div>
-                </Router>
-            );
-
-      }
+        return(
+            <Router>
+                <div>
+                    <Route exact path="/" component={this.LoginView} />
+                    <Route exact path="/home" component={Main} />
+                    <Route exact path="/register" component={this.RegisterView} />
+                </div>
+            </Router>
+        );
 
     const handleLogin = event =>{
-      if(this.state.user === localStorage.getItem("user") && this.state.password===localStorage.getItem("password")){
-          this.setState({ isLoggedIn: true });
-          localStorage.setItem("isLoggedIn",true);
-
-      }
+        this.setState({ isLoggedIn: true });
+        localStorage.setItem("isLoggedIn",true);
+        authentication.authenticate(this.state.user,this.state.password);
     }
 
     const handleUserChange = event =>{
         this.setState({user: event.target.value});
+        alert(this.state);
     }
 
     const handlePasswordChange = event =>{
@@ -86,6 +75,6 @@ class App extends Component {
     }
 
   }
-  }
+}
 
 export default App;
