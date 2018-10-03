@@ -1,4 +1,4 @@
-
+package-lock.json
 # Created by https://www.gitignore.io/api/reactnative,linux,macos,windows,node,emacs,java,intellij,netbeans,eclipse
 
 ### Eclipse ###
@@ -434,7 +434,7 @@ DerivedData/
 # General
 
 # Icon must end with two \r
-Icon
+Icon
 
 # Thumbnails
 
