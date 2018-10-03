@@ -11,9 +11,24 @@ import Typography from '@material-ui/core/Typography';
 import './css/Login.css';
 import {Main} from './Main';
 import { MainLogin } from './MainLogin';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
+const theme = createMuiTheme({
+    palette: {
+      primary: { main: "#89c34b" },
+    },
+    overrides: {
+        MuiButton: {
+          raisedPrimary: {
+            color: 'white',
+          },
+        },
+      }
+  });
 
 export class Login extends React.Component{
+
+    
 
     render(){
         return (
@@ -49,29 +64,33 @@ export class Login extends React.Component{
                             </FormControl>
 
                              <FormControl margin="normal" required fullWidth>
+                             <MuiThemeProvider theme={theme}>
                                 <Button
                                     align="center"
                                     type="submit"
                                     fullWidth
                                     variant="raised"
-                                    color="primary"
+                                    color= "primary"
                                     className="submit"
                                     onClick={this.props.handleLogin}
                                 >
                                     Login
                                 </Button>
+                            </MuiThemeProvider> 
                               </FormControl>
                               <FormControl margin="normal" required fullWidth>
+                              <MuiThemeProvider theme={theme}>
                                 <Button
                                     type="submit"
                                     fullWidth
                                     variant="raised"
-                                    color="primary"
+                                    color= "primary"
                                     className="submit"
                                     onClick={this.props.handleLogin}
                                  >
                                    Registrarse
                                  </Button>
+                                </MuiThemeProvider>
                                </FormControl>
 
                         </form>
