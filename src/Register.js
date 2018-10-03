@@ -11,6 +11,7 @@ import './css/Register.css';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import AssignmentIcon from '@material-ui/icons/Assignment';
+import axios from 'axios';
 
 const theme = createMuiTheme({
     palette: {
@@ -26,8 +27,33 @@ const theme = createMuiTheme({
   });
 
 export class Register extends React.Component{
+    constructor(props){
+      super(props);
+      this.state = {
+        axiosInstance :null,
+        name : '',
+        lastName : '',
+        email : '',
+        phone : '',
+        address : '',
+        password : '',
+        passwordChacked : ''
+      };
+      this.handlePasswordChange = this.handlePasswordChange.bind(this);
+      this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    }
 
-    
+  handleUserChange = event => {
+      this.setState({
+          user: event.target.value
+      });
+  }
+
+  handlePasswordChange = event => {
+      this.setState({
+          password: event.target.value
+      });
+  }
 
 
     render(){
@@ -133,18 +159,6 @@ export class Register extends React.Component{
 
 
         );
-    }
-
-    handleUserChange = event => {
-        this.setState({
-            user: event.target.value
-        });
-    }
-
-    handlePasswordChange = event => {
-        this.setState({
-            password: event.target.value
-        });
     }
 
 }

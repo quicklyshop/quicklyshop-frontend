@@ -5,28 +5,28 @@ import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
 import { Login } from './Login';
 import { Register} from './Register';
 import {ProfileUser} from './ProfileUser';
-import { Main } from './Main';  
+import { Main } from './Main';
 import axios from 'axios';
 
 class App extends Component {
     constructor(props) {
-		super(props);
+  		super(props);
 
-		const token = localStorage.getItem('userToken');
+  		const token = localStorage.getItem('userToken');
 
-		this.state = {
-			axiosInstance: null,
-			user: '',
-			password: '',
-			token: Object.is(token, undefined) ? '' : token,
-			isLoggedIn: typeof token === 'string' && token.length > 0
-		};
+  		this.state = {
+  			axiosInstance: null,
+  			user: '',
+  			password: '',
+  			token: Object.is(token, undefined) ? '' : token,
+  			isLoggedIn: typeof token === 'string' && token.length > 0
+  		};
 
-		this.handleLogin = this.handleLogin.bind(this);
-		this.askForToken = this.askForToken.bind(this);
-		this.validateAndStoreToken = this.validateAndStoreToken.bind(this);
-		this.createAxiosInstance = this.createAxiosInstance.bind(this);
-		this.validToken = this.validToken.bind(this);
+  		this.handleLogin = this.handleLogin.bind(this);
+  		this.askForToken = this.askForToken.bind(this);
+  		this.validateAndStoreToken = this.validateAndStoreToken.bind(this);
+  		this.createAxiosInstance = this.createAxiosInstance.bind(this);
+  		this.validToken = this.validToken.bind(this);
 	}
 
 	componentDidMount() {
@@ -66,9 +66,9 @@ class App extends Component {
 			})
 			.catch(function (error) {
 				console.log(error);
-				_this.setState({ 
+				_this.setState({
 					isLoggedIn: false,
-					axiosInstance: null 
+					axiosInstance: null
 				});
 			});
 	}
@@ -76,16 +76,16 @@ class App extends Component {
 	validateAndStoreToken(tokenJson) {
 		console.log('validating token in json', tokenJson);
 		if (tokenJson !== undefined && tokenJson.hasOwnProperty('accessToken')) {
-			this.setState({ 
+			this.setState({
 				isLoggedIn: true,
 				token: tokenJson['accessToken']
 			 });
 			localStorage.setItem('userToken', tokenJson['accessToken']);
 			this.createAxiosInstance();
 		} else {
-			this.setState({ 
+			this.setState({
 				isLoggedIn: false,
-				axiosInstance: null 
+				axiosInstance: null
 			});
 		}
 	}
@@ -119,7 +119,7 @@ class App extends Component {
     ProfileUserView = () => (
         <ProfileUser />
     );
-    
+
     RegisterView = () => (
         <Register
             handleLogin={this.handleLogin}
