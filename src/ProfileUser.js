@@ -24,7 +24,7 @@ const theme = createMuiTheme({
       }
   });
 
-export class Profile extends React.Component {
+export class ProfileUser extends React.Component {
 
     constructor(props) {
         super(props);
@@ -42,10 +42,10 @@ export class Profile extends React.Component {
                    <CssBaseline />
                        <main className="layout">
                            <Paper className="paper">
-                               <Typography variant="headline">Bienvenido</Typography>
-
 
                                <Avatar googleId="118096717852922241760" size="250" round={true} />
+                               <br/>
+                               <Typography variant="headline">John Doe</Typography>
 
                                <FormControl margin="normal" required fullWidth>
                                <MuiThemeProvider theme={theme}>
@@ -57,7 +57,7 @@ export class Profile extends React.Component {
                                        className="submit"
                                        onClick={this.props.handleLogin}
                                    >
-                                   Entrar
+                                   Editar Perfil
                                    </Button>
                                 </MuiThemeProvider>
                                </FormControl>
@@ -73,7 +73,7 @@ export class Profile extends React.Component {
                                    className="submit"
                                    onClick={this.props.handleLogin}
                                >
-                               otra cosa
+                               Registro de Compras
                                </Button>
                           </MuiThemeProvider>
                        </main>

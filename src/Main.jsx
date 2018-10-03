@@ -7,7 +7,7 @@ import {shoppingCart} from 'react-icons-kit/fa/shoppingCart';
 import {signOut} from 'react-icons-kit/fa/signOut';
 import Icon from 'react-icons-kit';
 import './css/Main.css';
-import { Profile } from './Profile';
+import { ProfileUser } from './ProfileUser';
 
 export class Main extends React.Component {
 
