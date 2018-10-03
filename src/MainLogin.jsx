@@ -2,12 +2,9 @@ import React from 'react';
 import { SidenavComponent } from './SidenavComponent';
 import Sidebar from "react-sidebar";
 import Button from '@material-ui/core/Button';
-import {list2} from 'react-icons-kit/icomoon/list2';
 import {shoppingCart} from 'react-icons-kit/fa/shoppingCart';
-import {signOut} from 'react-icons-kit/fa/signOut';
 import Icon from 'react-icons-kit';
 import './css/Main.css';
-import { Profile } from './Profile';
 
 export class MainLogin extends React.Component {
 
