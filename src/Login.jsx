@@ -90,22 +90,28 @@ export class Login extends React.Component{
                                 </Button>
                             </MuiThemeProvider> 
                               </FormControl>
-                              <FormControl margin="normal" required fullWidth>
+
+                        </form>
+                    </Paper>
+                </main>
+                <main className="layout">
+                <FormControl margin="normal" required fullWidth>
                               <MuiThemeProvider theme={theme}>
-                                <Button
+                                <Button 
+                                    align="center"
                                     type="submit"
                                     fullWidth
                                     variant="raised"
                                     color= "primary"
                                     className="submit"
+
+                                    onClick={this.props.handleLogin}
+                                    size="large"
                                  >
                                    Registrarse
                                  </Button>
                                 </MuiThemeProvider>
                                </FormControl>
-
-                        </form>
-                    </Paper>
                 </main>
             </React.Fragment>
 
