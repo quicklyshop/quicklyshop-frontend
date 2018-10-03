@@ -4,7 +4,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
 import { Login } from './Login';
 import { Register} from './Register';
-import {Profile} from './Profile';
+import {ProfileUser} from './ProfileUser';
 import { Main } from './Main';
 import authentication from './Authentication';
 
@@ -22,8 +22,8 @@ class App extends Component {
    };
 
 
-    ProfileView = () => (
-        <Profile />
+    ProfileUserView = () => (
+        <ProfileUser />
     );
 
 
@@ -60,7 +60,7 @@ class App extends Component {
                             <Route exact path="/login" component={this.LoginView} />
                             <Route exact path="/" component={Main} />
                             <Route exact path="/register" component={this.RegisterView} />
-                            <Route exact path="/profile" component={this.ProfileView} />
+                            <Route exact path="/profileusr" component={this.ProfileUserView} />
                         </div>
                 </Router>
             );
