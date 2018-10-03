@@ -58,7 +58,7 @@ class App extends Component {
                      <Router>
                         <div>
                             <Route exact path="/login" component={this.LoginView} />
-                            <Route e	both modified:   package-lock.jsoxact path="/" component={Main} />
+                            <Route exact path="/" component={Main} />
                             <Route exact path="/register" component={this.RegisterView} />
                             <Route exact path="/profile" component={this.ProfileView} />
                         </div>
