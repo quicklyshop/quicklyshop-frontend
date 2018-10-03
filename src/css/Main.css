@@ -12,6 +12,9 @@
 
 #logout, #logo, #open-menu {
   color:white;
+  font-size: large;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  
 }
 
 #logout{
@@ -26,4 +29,5 @@
 
 Button {
   height: 30px;
+  
 }
