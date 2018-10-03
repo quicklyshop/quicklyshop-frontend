@@ -13,6 +13,7 @@ import {Main} from './Main';
 import { MainLogin } from './MainLogin';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
+
 const theme = createMuiTheme({
     palette: {
       primary: { main: "#89c34b" },
@@ -27,6 +28,18 @@ const theme = createMuiTheme({
   });
 
 export class Login extends React.Component{
+    constructor(props) {
+    super(props);
+    this.submitHandle = this.submitHandle.bind(this);
+    }
+
+    submitHandle(event) {
+		event.preventDefault();
+		console.log('evento:', event);
+		this.props.onLogin();
+	}
+
+    
 
     
 
@@ -41,7 +54,7 @@ export class Login extends React.Component{
                             <LockIcon />
                         </Avatar>
                         <Typography variant="headline">Iniciar Sesion</Typography>
-                        <form className="form">
+                        <form className="form" onSubmit={this.submitHandle}>
                             <FormControl margin="normal" required fullWidth>
                                 <InputLabel htmlFor="email">Usuario</InputLabel>
                                 <Input
@@ -49,7 +62,7 @@ export class Login extends React.Component{
                                 name="email"
                                 autoComplete="email"
                                 autoFocus
-                                onChange = {this.props.handleUserChange}
+                                onChange = {this.props.onUserChange}
                                 />
                             </FormControl>
                             <FormControl margin="normal" required fullWidth>
@@ -59,7 +72,7 @@ export class Login extends React.Component{
                                     type="password"
                                     id="password"
                                     autoComplete="current-password"
-                                    onChange = {this.props.handlePasswordChange}
+                                    onChange = {this.props.onPasswordChange}
                                 />
                             </FormControl>
 
@@ -72,7 +85,6 @@ export class Login extends React.Component{
                                     variant="raised"
                                     color= "primary"
                                     className="submit"
-                                    onClick={this.props.handleLogin}
                                 >
                                     Login
                                 </Button>
@@ -92,6 +104,7 @@ export class Login extends React.Component{
                                     variant="raised"
                                     color= "primary"
                                     className="submit"
+
                                     onClick={this.props.handleLogin}
                                     size="large"
                                  >
@@ -106,17 +119,6 @@ export class Login extends React.Component{
         );
     }
 
-    handleUserChange = event => {
-        alert(event.target.value);
-        this.setState({
-            user: event.target.value
-        });
-    }
 
-    handlePasswordChange = event => {
-        this.setState({
-            password: event.target.value
-        });
-    }
 
 }
