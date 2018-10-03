@@ -37,15 +37,39 @@ export class Register extends React.Component{
         phone : '',
         address : '',
         password : '',
-        passwordChacked : ''
+        passwordConfirmation : ''
       };
       this.handlePasswordChange = this.handlePasswordChange.bind(this);
       this.handlePasswordChange = this.handlePasswordChange.bind(this);
     }
 
-  handleUserChange = event => {
+  handleNameChange = event => {
       this.setState({
-          user: event.target.value
+          name: event.target.value
+      });
+  }
+
+  handleLastNameChange = event => {
+      this.setState({
+          lastName: event.target.value
+      });
+  }
+
+  handleEmailChange = event => {
+      this.setState({
+          email: event.target.value
+      });
+  }
+
+  handlePhoneChange = event => {
+      this.setState({
+          phone: event.target.value
+      });
+  }
+
+  handleAddressChange = event => {
+      this.setState({
+          address: event.target.value
       });
   }
 
@@ -54,6 +78,14 @@ export class Register extends React.Component{
           password: event.target.value
       });
   }
+
+  handlePasswordConfirmationChange = event => {
+      this.setState({
+          passwordConfirmation: event.target.value
+      });
+  }
+
+  handleRegister 
 
 
     render(){
@@ -69,12 +101,12 @@ export class Register extends React.Component{
                         <Typography variant="headline">Register</Typography>
                         <form className="form">
                             <FormControl margin="normal" required fullWidth>
-                                <InputLabel htmlFor="text">Names</InputLabel>
+                                <InputLabel htmlFor="text">Name</InputLabel>
                                 <Input
                                 id="name"
                                 name="name"
                                 autoFocus
-                                onChange = {this.props.handleUserChange}
+                                onChange = {this.props.handleNameChange}
                                 />
                             </FormControl>
                             <FormControl margin="normal" required fullWidth>
@@ -83,7 +115,7 @@ export class Register extends React.Component{
                                     id="lastName"
                                     name="lastName"
                                     autoFocus
-                                    onChange = {this.props.handleUserChange}
+                                    onChange = {this.props.handleLastNameChange}
                                 />
                             </FormControl>
                             <FormControl margin="normal" required fullWidth>
@@ -93,7 +125,7 @@ export class Register extends React.Component{
                                     name="email"
                                     autoComplete="email"
                                     autoFocus
-                                    onChange = {this.props.handleUserChange}
+                                    onChange = {this.props.handleEmailChange}
                                 />
                             </FormControl>
                             <FormControl margin="normal" required fullWidth>
@@ -103,7 +135,7 @@ export class Register extends React.Component{
                                     name="phone"
                                     autoComplete="phone"
                                     autoFocus
-                                    onChange = {this.props.handleUserChange}
+                                    onChange = {this.props.handlePhoneChange}
                                 />
                              </FormControl>
                               <FormControl margin="normal" required fullWidth>
@@ -113,7 +145,7 @@ export class Register extends React.Component{
                                         name="Address"
                                         autoComplete="Address"
                                         autoFocus
-                                        onChange = {this.props.handleUserChange}
+                                        onChange = {this.props.handleAddressChange}
                                    />
                               </FormControl>
                               <FormControl margin="normal" required fullWidth>
@@ -133,7 +165,7 @@ export class Register extends React.Component{
                                     type="confirmPassword"
                                     id="password"
                                     autoComplete="current-password"
-                                    onChange = {this.props.handlePasswordChange}
+                                    onChange = {this.props.handlePasswordConfirmationChange}
                                 />
                              </FormControl>
                              <FormControl margin="normal" required fullWidth>
