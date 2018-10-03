@@ -57,8 +57,7 @@ class App extends Component {
                 return(
                      <Router>
                         <div>
-                            <Route exact path="/login" component={this.LoginView} />
-                            <Route exact path="/" component={Main} />
+                            <Route exact path="" component={this.LoginView} />
                             <Route exact path="/register" component={this.RegisterView} />
                             <Route exact path="/profile" component={this.ProfileView} />
                         </div>
