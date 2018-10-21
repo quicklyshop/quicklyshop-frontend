@@ -84,18 +84,24 @@ export class Register extends React.Component{
       });
   }
 
-  handleRegister() {
+  handleRegister = (event) => {
     console.log("entra a enviar el post");
     /*TODO: Agregar los estados que le faltan a los usuarios, telfono, direccion*/
-    axios.post('http://localhost:8080/user/register', [{
-      email : this.state.email,
-      firstname : this.state.name,
-      lastname : this.state.lastName,
-      username : this.state.email
-    },{
-      username : this.state.email,
-      password : this.state.password
-    }])
+
+    const form = {
+      user: {
+        email: this.state.email,
+        firstname: this.state.name,
+        lastname: this.state.lastName,
+        username: this.state.email
+      },
+      userLogin: {
+        username: this.state.email,
+        password: this.state.password
+      }
+    };
+
+    axios.post('http://localhost:8080/user/register', form)
     .then(function (response) {
       console.log('Response: '+ response.data);
     })
@@ -117,7 +123,7 @@ export class Register extends React.Component{
                             <AssignmentIcon />
                         </Avatar>
                         <Typography variant="headline">Register</Typography>
-                        <form className="form">
+                        <form className="form" onSubmit={this.handleRegister}>
                             <FormControl margin="normal" required fullWidth>
                                 <InputLabel htmlFor="text">Name</InputLabel>
                                 <Input
@@ -187,20 +193,18 @@ export class Register extends React.Component{
                                 />
                              </FormControl>
                              <FormControl margin="normal" required fullWidth>
-                             <MuiThemeProvider theme={theme}>
-                                <Button
-                                    align="center"
-                                    type="submit"
-                                    fullWidth
-                                    variant="raised"
-                                    color="primary"
-                                    className="submit"
-                                    onClick={this.handleRegister}
-                                >
-                                    Submit
-                                </Button>
+                               <MuiThemeProvider theme={theme}>
+                                  <Button
+                                      align="center"
+                                      type="submit"
+                                      fullWidth
+                                      variant="raised"
+                                      color="primary"
+                                      className="submit">
+                                      Submit
+                                  </Button>
                                 </MuiThemeProvider>
-                                </FormControl>
+                            </FormControl>
                         </form>
                     </Paper>
                 </main>
