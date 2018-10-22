@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import FormControl from '@material-ui/core/FormControl';
@@ -203,7 +204,8 @@ export class Register extends React.Component{
                                       fullWidth
                                       variant="raised"
                                       color="primary"
-                                      className="submit">
+                                      className="submit"
+                                      component={ Link } to="/">
                                       Submit
                                   </Button>
                                 </MuiThemeProvider>

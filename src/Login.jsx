@@ -1,5 +1,6 @@
 import React from 'react';
 import Avatar from '@material-ui/core/Avatar';
+import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import FormControl from '@material-ui/core/FormControl';
@@ -13,7 +14,7 @@ import {Main} from './Main';
 import { MainLogin } from './MainLogin';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
- 
+
 const theme = createMuiTheme({
     palette: {
       primary: { main: "#89c34b" },
@@ -40,15 +41,15 @@ export class Login extends React.Component{
 		this.props.onLogin();
 	}
 
-    
 
-    
+
+
 
     render(
-        
+
     ){
         return (
-            
+
             <React.Fragment>
                 <MainLogin />
                 <CssBaseline />
@@ -92,7 +93,7 @@ export class Login extends React.Component{
                                 >
                                     Login
                                 </Button>
-                            </MuiThemeProvider> 
+                            </MuiThemeProvider>
                               </FormControl>
 
                         </form>
@@ -101,7 +102,7 @@ export class Login extends React.Component{
                 <main className="layout">
                 <FormControl margin="normal" required fullWidth>
                               <MuiThemeProvider theme={theme}>
-                                <Button 
+                                <Button
                                     align="center"
                                     type="submit"
                                     fullWidth
@@ -111,6 +112,7 @@ export class Login extends React.Component{
 
                                     onClick={this.props.handleLogin}
                                     size="large"
+                                    component={ Link } to="/register"
                                  >
                                    Registrarse
                                  </Button>
@@ -118,7 +120,7 @@ export class Login extends React.Component{
                                </FormControl>
                 </main>
             </React.Fragment>
-            
+
         );
     }
 
