@@ -182,6 +182,7 @@ export class Register extends React.Component{
                                     onChange = {this.handlePasswordChange}
                                 />
                               </FormControl>
+                              
                             <FormControl margin="normal" required fullWidth>
                                 <InputLabel htmlFor="password">Confirm Password</InputLabel>
                                 <Input
