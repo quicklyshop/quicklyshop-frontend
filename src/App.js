@@ -133,6 +133,7 @@ class App extends Component {
                 return(
                     <Router>
                         <div>
+						<Route exact path="/" component={this.ProfileUserView} />
                             <Route exact path="/register" component={this.RegisterView} />
                         </div>
                      </Router>
