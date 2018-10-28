@@ -205,6 +205,7 @@ export class Register extends React.Component{
                                       variant="raised"
                                       color="primary"
                                       className="submit"
+                                      onClick={this.handleRegister}
                                       component={ Link } to="/">
                                       Submit
                                   </Button>
