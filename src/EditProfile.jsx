@@ -29,7 +29,7 @@ const theme = createMuiTheme({
   });
 
 
-export class EditName extends React.Component{
+export class EditProfile extends React.Component{
     constructor(props) {
     super(props);
     this.submitHandle = this.submitHandle.bind(this);

@@ -10,7 +10,8 @@ import Typography from '@material-ui/core/Typography';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import {Main} from './Main';
 import './css/profile.css';
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom';
+import { Link } from 'react-router-dom'
 
 
 const theme = createMuiTheme({
@@ -59,6 +60,7 @@ export class ProfileUser extends React.Component {
                                        color="primary"
                                        className="submit"
                                        onClick={this.props.handleLogin}
+                                       component={ Link } to="/editprofile"
                                    >
                                    Editar Perfil
                                    </Button>
