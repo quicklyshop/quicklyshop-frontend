@@ -94,7 +94,9 @@ export class Register extends React.Component{
         email: this.state.email,
         firstname: this.state.name,
         lastname: this.state.lastName,
-        username: this.state.email
+        username: this.state.email,
+        phone: this.state.phone,
+        address: this.state.address
       },
       userLogin: {
         username: this.state.email,
@@ -202,6 +204,7 @@ export class Register extends React.Component{
                                       variant="raised"
                                       color="primary"
                                       className="submit"
+                                      onClick={this.handleRegister}
                                       component={ Link } to="/">
                                       Submit
                                   </Button>
