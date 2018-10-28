@@ -7,6 +7,7 @@ import { Register} from './Register';
 import {ProfileUser} from './ProfileUser';
 import { Main } from './Main';
 import axios from 'axios';
+import { EditName } from './EditName';
 
 class App extends Component {
     constructor(props) {
@@ -95,6 +96,7 @@ class App extends Component {
 		console.log('Actual', this.state.user, this.state.password);
 	}
 
+
 	handleUserChange = (event) => {
 		event.preventDefault();
 		console.log('user', event.target.value);
@@ -118,7 +120,11 @@ class App extends Component {
 
     ProfileUserView = () => (
         <ProfileUser />
-    );
+	);
+	
+	EditNameView = () =>(
+		<EditName />
+	);
 
     RegisterView = () => (
         <Register
@@ -146,6 +152,7 @@ class App extends Component {
                             <Route exact path="/" component={this.LoginView} />
                             <Route exact path="/register" component={this.RegisterView} />
                             <Route exact path="/profileusr" component={this.ProfileUserView} />
+							<Route exact path="/editname" component={this.EditNameView} />
                         </div>
                 </Router>
             );
