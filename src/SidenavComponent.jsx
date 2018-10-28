@@ -20,7 +20,7 @@ export const SidenavComponent = () => (
             </Nav>
             <Nav id='stores'>
                 <NavIcon><SvgIcon size={20} icon={office}/></NavIcon>
-                <NavText> Aliados </NavText>
+                <NavText> Aliado </NavText>
             </Nav>
         </SideNav>
     </div>
