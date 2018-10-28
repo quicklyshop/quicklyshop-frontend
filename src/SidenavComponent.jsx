@@ -1,8 +1,9 @@
 import React from 'react';
 import SideNav, { Nav, NavIcon, NavText } from 'react-sidenav';
 import SvgIcon from 'react-icons-kit';
-import { ic_business } from 'react-icons-kit/md/ic_business';
-import {happy2} from 'react-icons-kit/icomoon/happy2'
+import {cart} from 'react-icons-kit/icomoon/cart';
+import {office} from 'react-icons-kit/icomoon/office';
+import {user} from 'react-icons-kit/icomoon/user'
 
 
 //specify the base color/background of the parent container if needed
@@ -10,12 +11,16 @@ export const SidenavComponent = () => (
     <div style={{background: '#2c3e50', color: '#FFF', width: 220}}>
         <SideNav highlightColor='white' highlightBgColor='#89c34b' defaultSelected='profile'>
             <Nav id='profile'>
-                <NavIcon><SvgIcon size={20} icon={happy2}/></NavIcon>
-                <NavText> Profile </NavText>
+                <NavIcon><SvgIcon size={20} icon={user}/></NavIcon>
+                <NavText> Mi perfil </NavText>
             </Nav>
             <Nav id='sales'>
-                <NavIcon><SvgIcon size={20} icon={ic_business}/></NavIcon>
-                <NavText> Sales </NavText>
+                <NavIcon><SvgIcon size={20} icon={cart}/></NavIcon>
+                <NavText> Mis compras </NavText>
+            </Nav>
+            <Nav id='stores'>
+                <NavIcon><SvgIcon size={20} icon={office}/></NavIcon>
+                <NavText> Aliados </NavText>
             </Nav>
         </SideNav>
     </div>

@@ -76,7 +76,7 @@ export class ProfileUser extends React.Component {
                                    className="submit"
                                    onClick={this.props.handleLogin}
                                >
-                               Registro de Compras
+                               Hacer una nueva compra
                                </Button>
                           </MuiThemeProvider>
                        </main>
