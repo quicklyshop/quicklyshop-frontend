@@ -58,7 +58,8 @@ export class EditProfile extends React.Component{
                         <Avatar className="avatar">
                             <SvgIcon size={20} icon={user}/>
                         </Avatar>
-                        <Typography variant="headline">Cambiar Nombre de Usuario</Typography>
+                        <Typography variant="headline">Editar Perfil</Typography>
+                        <Typography variant="subheading">Registre solo los campos que desea cambiar</Typography>
                         <form className="form" onSubmit={this.submitHandle}>
                             <FormControl margin="normal" required fullWidth>
                                 <InputLabel htmlFor="user">Nuevo Usuario</InputLabel>
@@ -67,9 +68,38 @@ export class EditProfile extends React.Component{
                                 name="user"
                                 autoComplete="user"
                                 autoFocus
-                                
+                                />         
+                            </FormControl>
+                            <FormControl margin="normal" required fullWidth>
+                                <InputLabel htmlFor="text">Email</InputLabel>
+                               <Input
+                                    id="email"
+                                    name="email"
+                                    autoComplete="email"
+                                    autoFocus
+                                    onChange = {this.handleEmailChange}
                                 />
                             </FormControl>
+                            <FormControl margin="normal" required fullWidth>
+                                <InputLabel htmlFor="number">Telefono</InputLabel>
+                                <Input
+                                    id="phone"
+                                    name="phone"
+                                    autoComplete="phone"
+                                    autoFocus
+                                    onChange = {this.handlePhoneChange}
+                                />
+                             </FormControl>
+                              <FormControl margin="normal" required fullWidth>
+                                   <InputLabel htmlFor="number">Direccion</InputLabel>
+                                   <Input
+                                        id="Address"
+                                        name="Address"
+                                        autoComplete="Address"
+                                        autoFocus
+                                        onChange = {this.handleAddressChange}
+                                   />
+                              </FormControl>
 
                              <FormControl margin="normal" required fullWidth>
                              <MuiThemeProvider theme={theme}>

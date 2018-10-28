@@ -49,7 +49,7 @@ export class ProfileUser extends React.Component {
                            <Paper className="paper">
                                <Avatar googleId="118096717852922241760" size="250" round={true} />
                                <br/>
-                               <Typography variant="headline">John Doe</Typography>
+                               <Typography variant="headline">Andres Perez</Typography>
 
                                <FormControl margin="normal" required fullWidth>
                                <MuiThemeProvider theme={theme}>
