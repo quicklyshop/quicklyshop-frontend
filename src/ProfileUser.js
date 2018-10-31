@@ -11,7 +11,8 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import {Main} from './Main';
 import './css/profile.css';
 import ReactDOM from 'react-dom';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 
 const theme = createMuiTheme({
@@ -31,15 +32,37 @@ export class ProfileUser extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { items: [], text: '', priority: 0, dueDate: "" };
+        this.state = {userName:props.user , name: ""};
         this.handleTextChange = this.handleTextChange.bind(this);
         this.handlePriorityChange = this.handlePriorityChange.bind(this);
         this.handleDateChange = this.handleDateChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        
+        this.getProfileData = this.getProfileData.bind(this);
+
+        console.log("User in profile: "+props.user);
+
+        this.getProfileData();
     }
 
-    
+    getProfileData = (event) => {
+        console.log("Start GET");
+
+        const _this = this;
+
+        axios.get('http://localhost:8080/user/'+this.state.userName)
+          .then(function (response) {
+            const user = JSON.parse(JSON.stringify(response));
+            console.log("This is the good response at profile: "+ user.data.firstname );
+            console.log("Name at profile: "+ user.data.firstname+user.data.lastname );
+            const namer = user.data.firstname;
+            _this.setState({ name: user.data.firstname + " " + user.data.lastname });
+          })
+          .catch(function (error) {
+            console.log();("Error at ProfileUser.js: "+error);
+          });
+    };
+
+
     render() {
         return (
                 <React.Fragment>
@@ -49,7 +72,7 @@ export class ProfileUser extends React.Component {
                            <Paper className="paper">
                                <Avatar googleId="118096717852922241760" size="250" round={true} />
                                <br/>
-                               <Typography variant="headline">Andres Perez</Typography>
+                               <Typography variant="headline">{this.state.name}</Typography>
 
                                <FormControl margin="normal" required fullWidth>
                                <MuiThemeProvider theme={theme}>

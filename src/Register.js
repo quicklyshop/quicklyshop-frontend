@@ -87,8 +87,6 @@ export class Register extends React.Component{
 
   handleRegister = (event) => {
     console.log("entra a enviar el post");
-    /*TODO: Agregar los estados que le faltan a los usuarios, telfono, direccion*/
-
     const form = {
       user: {
         email: this.state.email,

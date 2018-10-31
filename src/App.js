@@ -119,11 +119,12 @@ class App extends Component {
 	);
 
     ProfileUserView = () => (
-        <ProfileUser />
+        <ProfileUser
+          user={this.state.user}/>
 	);
-	
+
 	EditProfileView = () =>(
-		<EditProfile 
+		<EditProfile
 		handleLogin={this.handleLogin}
 		/>
 	);
