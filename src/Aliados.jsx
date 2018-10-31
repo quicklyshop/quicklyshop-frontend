@@ -46,6 +46,7 @@ export class Aliados extends React.Component{
                                 <SvgIcon size={20} icon={office}/>
                             </Avatar>
                             <Typography variant="headline">Nuestros Aliados</Typography>
+                            <Typography variant="subheading">Seleccione el almacen donde va a realizar sus compras</Typography>
                             <FormControl margin="normal">
                                 <Container>
                                     <Row>
