@@ -59,7 +59,7 @@ class App extends Component {
 	askForToken() {
 		const _this = this;
 
-		axios.post('http://localhost:8080/user/login', {
+		axios.post('https://quicklyshop.herokuapp.com/user/login', {
 			username: this.state.user,
 			password: this.state.password
 		})
