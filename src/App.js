@@ -130,7 +130,7 @@ class App extends Component {
 	);
 
 	ImportProductView = () => (
-        <ImportProduct />
+        <ImportProduct axios={this.state.axiosInstance} />
 	);
 	
 	EditProfileView = () =>(
