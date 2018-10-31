@@ -13,6 +13,7 @@ import { MainLogin } from './MainLogin';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import SvgIcon from 'react-icons-kit';
 import {user} from 'react-icons-kit/icomoon/user';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -38,6 +39,7 @@ export class EditProfile extends React.Component{
         this.state = {
             userName:localStorage.getItem('currentUserName'),
             name:'',
+            lastName:'',
             email:'',
             phone:'',
             address:''
@@ -62,20 +64,35 @@ export class EditProfile extends React.Component{
             console.log("This is the good response at EditProfile: "+ user.data.firstname );
             console.log("Name at EditProfile: "+ user.data.firstname+user.data.email );
             _this.setState({
-              name: user.data.firstname + " " + user.data.lastname,
+              name: user.data.firstname,
+              lastName:user.data.lastname,
               email: user.data.email,
               phone: user.data.phone,
               address: user.data.address});
           })
           .catch(function (error) {
             console.log();("Error at EditProfileUser.js: "+error);
+          });
+    }
+
+    handleEditProfile = (event) => {
+        const _this = this;
+        const form = {
+          email: this.state.email,
+          firstname: this.state.name,
+          lastname: this.state.lastName,
+          username: this.state.email,
+          phone: this.state.phone,
+          address: this.state.address
+        };
+        axios.post('http://localhost:8080/user/profile', form)
+          .then(function (response){
+              console.log("Response EditProfile: "+response);
           })
-          /*.then(function () {
-            console.log(_this.state.name);
-            console.log(_this.state.address);
-            console.log(_this.state.phone);
-          })*/;
-    };
+          .catch(function (error) {
+             console.console.error(error);
+          });
+    }
 
     handlePhoneChange = event => {
         this.setState({
@@ -93,6 +110,12 @@ export class EditProfile extends React.Component{
         this.setState({
             name: event.target.value
         });
+    }
+
+    handleLastNameChange = event => {
+      this.setState({
+          lastName: event.target.value
+      });
     }
 
     render(){
@@ -121,13 +144,25 @@ export class EditProfile extends React.Component{
                               />
                           </FormControl>
                             <FormControl margin="normal" required fullWidth>
-                                <InputLabel htmlFor="user">Nombre</InputLabel>
+                                <InputLabel htmlFor="user">Primer Nombre</InputLabel>
                                 <Input
                                 id="user"
                                 name="user"
                                 autoComplete="user"
                                 value={this.state.name}
                                 autoFocus
+                                onChange={this.handleNameChange}
+                                />
+                            </FormControl>
+                            <FormControl margin="normal" required fullWidth>
+                                <InputLabel htmlFor="lastName">Apellido</InputLabel>
+                                <Input
+                                id="lastName"
+                                name="lastName"
+                                autoComplete="lastName"
+                                value={this.state.lastName}
+                                autoFocus
+                                onChange = {this.handleLastNameChange}
                                 />
                             </FormControl>
                             <FormControl margin="normal" required fullWidth>
@@ -162,9 +197,11 @@ export class EditProfile extends React.Component{
                                     variant="raised"
                                     color= "primary"
                                     className="submit"
+                                    onClick={this.handleEditProfile}
+                                    component={ Link } to="/"
 
                                 >
-                                    Cambiar
+                                    Actualizar
                                 </Button>
                             </MuiThemeProvider>
                               </FormControl>
