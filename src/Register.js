@@ -104,7 +104,7 @@ export class Register extends React.Component{
 
     const _this = this;
 
-    axios.post('http://localhost:8080/user/register', form)
+    axios.post('https://quicklyshop.herokuapp.com/user/register', form)
     .then(function (response) {
       console.log('Response: '+ response.data);
       localStorage.setItem('currentUserName', _this.state.email);
