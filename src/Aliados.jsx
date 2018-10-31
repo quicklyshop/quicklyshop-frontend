@@ -12,6 +12,7 @@ import { Container, Row, Col } from 'react-grid-system';
 import Button from "@material-ui/core/Button";
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import Image from 'material-ui-image';
+import { Link } from 'react-router-dom';
  
 
 const theme = createMuiTheme({
@@ -209,8 +210,23 @@ export class Aliados extends React.Component{
                                             </MuiThemeProvider>
                                         </Col>
                                     </Row>
-                                </Container>                            
+                                </Container>
+                                                          
                             </FormControl>
+                            <br></br><br></br><br></br><br></br>
+                            <MuiThemeProvider theme={theme}>
+                                <Button
+                                    type="submit"
+                                    fullWidth
+                                    variant="raised"
+                                    color="primary"
+                                    className="submit"
+                                    component={ Link } to="/"
+                                >
+                                Mi perfil
+                                </Button>
+                            </MuiThemeProvider>  
+                            <br></br><br></br>
                         </Paper>
                     </main>
                 <br></br><br></br><br></br><br></br><br></br>

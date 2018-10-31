@@ -104,6 +104,37 @@ export class ProfileUser extends React.Component {
                                Hacer una nueva compra
                                </Button>
                           </MuiThemeProvider>
+                          <br/>
+                          <br/>
+                          
+                          <MuiThemeProvider theme={theme}>
+                               <Button
+                                   type="submit"
+                                   fullWidth
+                                   variant="raised"
+                                   color="primary"
+                                   className="submit"
+                                   onClick={this.props.handleLogin}
+                                   component={ Link } to="/aliados"
+                               >
+                               Ver nuestros aliados
+                               </Button>
+                          </MuiThemeProvider>
+                          <br/>
+                          <br/>
+                          <MuiThemeProvider theme={theme}>
+                               <Button
+                                   type="submit"
+                                   fullWidth
+                                   variant="raised"
+                                   color="primary"
+                                   className="submit"
+                                   onClick={this.props.handleLogin}
+                                   component={ Link } to="/importproduct"
+                               >
+                               Importar productos
+                               </Button>
+                          </MuiThemeProvider>
                        </main>
                 </React.Fragment>
 
