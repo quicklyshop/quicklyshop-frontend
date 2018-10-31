@@ -1,6 +1,6 @@
 package-lock.json
 # Created by https://www.gitignore.io/api/reactnative,linux,macos,windows,node,emacs,java,intellij,netbeans,eclipse
-
+*.lock
 ### Eclipse ###
 .idea/
 .metadata
