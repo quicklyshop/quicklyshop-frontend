@@ -8,6 +8,7 @@ import {ProfileUser} from './ProfileUser';
 import { Main } from './Main';
 import axios from 'axios';
 import { EditProfile } from './EditProfile';
+import { Aliados } from './Aliados'
 
 class App extends Component {
     constructor(props) {
@@ -121,6 +122,10 @@ class App extends Component {
     ProfileUserView = () => (
         <ProfileUser />
 	);
+
+	AliadosView = () => (
+        <Aliados />
+	);
 	
 	EditProfileView = () =>(
 		<EditProfile 
@@ -144,6 +149,7 @@ class App extends Component {
 						<Route exact path="/" component={this.ProfileUserView} />
                             <Route exact path="/register" component={this.RegisterView} />
 							<Route exact path="/editprofile" component={this.EditProfileView} />
+							<Route exact path="/aliados" component={this.AliadosView} />
                         </div>
                      </Router>
                      );
@@ -156,6 +162,7 @@ class App extends Component {
                             <Route exact path="/register" component={this.RegisterView} />
                             <Route exact path="/profileusr" component={this.ProfileUserView} />
 							<Route exact path="/editprofile" component={this.EditProfileView} />
+							<Route exact path="/aliados" component={this.AliadosView} />
                         </div>
                 </Router>
             );
