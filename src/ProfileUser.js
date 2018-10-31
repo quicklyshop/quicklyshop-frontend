@@ -49,7 +49,7 @@ export class ProfileUser extends React.Component {
 
         const _this = this;
 
-        axios.get('http://localhost:8080/user/'+this.state.userName)
+        axios.get('http://localhost:8080/user/'+localStorage.getItem('currentUserName'))
           .then(function (response) {
             const user = JSON.parse(JSON.stringify(response));
             console.log("This is the good response at profile: "+ user.data.firstname );

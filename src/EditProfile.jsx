@@ -68,7 +68,7 @@ export class EditProfile extends React.Component{
                                 name="user"
                                 autoComplete="user"
                                 autoFocus
-                                />         
+                                />
                             </FormControl>
                             <FormControl margin="normal" required fullWidth>
                                 <InputLabel htmlFor="text">Email</InputLabel>
@@ -110,7 +110,7 @@ export class EditProfile extends React.Component{
                                     variant="raised"
                                     color= "primary"
                                     className="submit"
-                                    
+
                                 >
                                     Cambiar
                                 </Button>
@@ -120,7 +120,7 @@ export class EditProfile extends React.Component{
                         </form>
                     </Paper>
                 </main>
-                
+
             </React.Fragment>
 
         );
