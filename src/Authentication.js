@@ -4,7 +4,7 @@ var authentication = (function(){
     return {
         authenticate: function(user,password){
             alert (user);
-            axios.post('http://localhost:3000/user/login', {
+            axios.post('https://quicklyshop.herokuapp.com/user/login', {
                 username: user,
                 password: password
             })

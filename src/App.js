@@ -48,7 +48,7 @@ class App extends Component {
 		console.log('creating axios instance');
 
 		const axiosIns = axios.create({
-			baseURL: 'http://localhost:8080/api',
+			baseURL: 'https://quicklyshop.herokuapp.com/api',
 			timeout: 1000,
 			headers: { 'authorization': 'Bearer ' + this.state.token }
 		});

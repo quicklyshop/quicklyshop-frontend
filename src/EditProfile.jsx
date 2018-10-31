@@ -57,7 +57,7 @@ export class EditProfile extends React.Component{
 
         const _this = this;
 
-        axios.get('http://localhost:8080/user/'+localStorage.getItem('currentUserName'))
+        axios.get('https://quicklyshop.herokuapp.com/user/'+localStorage.getItem('currentUserName'))
           .then(function (response) {
             const user = JSON.parse(JSON.stringify(response));
             console.log("This is the good response at EditProfile: "+ user.data.firstname );
@@ -84,7 +84,7 @@ export class EditProfile extends React.Component{
           phone: this.state.phone,
           address: this.state.address
         };
-        axios.post('http://localhost:8080/user/profile', form)
+        axios.post('https://quicklyshop.herokuapp.com/user/profile', form)
           .then(function (response){
               console.log("Response EditProfile: "+response);
           })
