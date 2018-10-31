@@ -82,7 +82,7 @@ export class ProfileUser extends React.Component {
                                        variant="raised"
                                        color="primary"
                                        className="submit"
-                                       onClick={this.props.handleLogin}
+                                       onClick={this.handleEditProfile}
                                        component={ Link } to="/editprofile"
                                    >
                                    Editar Perfil

@@ -31,8 +31,8 @@ const theme = createMuiTheme({
 
 export class Login extends React.Component{
     constructor(props) {
-    super(props);
-    this.submitHandle = this.submitHandle.bind(this);
+        super(props);
+        this.submitHandle = this.submitHandle.bind(this);
     }
 
     submitHandle(event) {
@@ -90,7 +90,7 @@ export class Login extends React.Component{
                                     variant="raised"
                                     color= "primary"
                                     className="submit"
-                                    
+
                                 >
                                     Login
                                 </Button>
