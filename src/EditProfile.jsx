@@ -31,7 +31,9 @@ const theme = createMuiTheme({
 
 
 export class EditProfile extends React.Component{
-    constructor(props) {
+    // static contextType = ServerContext;
+
+    constructor(props, context) {
         super(props);
         this.getUserData = this.getUserData.bind(this);
         this.getUserData();
@@ -43,9 +45,12 @@ export class EditProfile extends React.Component{
             phone:'',
             address:''
         };
+
         this.submitHandle = this.submitHandle.bind(this);
     }
 
+    baseServerUrl = this.context;
+    
     submitHandle(event) {
     		event.preventDefault();
     		console.log('evento:', event);
@@ -57,7 +62,7 @@ export class EditProfile extends React.Component{
 
         const _this = this;
 
-        axios.get('http://localhost:8080/user/'+localStorage.getItem('currentUserName'))
+        axios.get(this.baseServerUrl + '/user/'+localStorage.getItem('currentUserName'))
           .then(function (response) {
             const user = JSON.parse(JSON.stringify(response));
             console.log("This is the good response at EditProfile: "+ user.data.firstname );
@@ -84,7 +89,7 @@ export class EditProfile extends React.Component{
           phone: this.state.phone,
           address: this.state.address
         };
-        axios.post('http://localhost:8080/user/profile', form)
+        axios.post(this.baseServerUrl + '/user/profile', form)
           .then(function (response){
               console.log("Response EditProfile: "+response);
           })

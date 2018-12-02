@@ -1,36 +1,43 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './css/App.css';
 import 'react-datepicker/dist/react-datepicker.css';
-import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import { Login } from './Login';
-import { Register} from './Register';
-import {ProfileUser} from './ProfileUser';
+import { Register } from './Register';
+import { ProfileUser } from './ProfileUser';
 import { Main } from './Main';
 import axios from 'axios';
 import { EditProfile } from './EditProfile';
 import { Aliados } from './Aliados';
 import { ImportProduct } from './ImportProduct';
 
-class App extends Component {
-    constructor(props) {
-  		super(props);
+const baseServerUrl = 'https://quicklyshop-backend.herokuapp.com/';
 
-  		const token = localStorage.getItem('userToken');
+const ServerContext = React.createContext(baseServerUrl);
 
-  		this.state = {
-  			axiosInstance: null,
-  			user: '',
-  			password: '',
-  			token: Object.is(token, undefined) ? '' : token,
-  			isLoggedIn: typeof token === 'string' && token.length > 0
-  		};
+class App extends React.Component {
 
-  		this.handleLogin = this.handleLogin.bind(this);
-  		this.askForToken = this.askForToken.bind(this);
-  		this.validateAndStoreToken = this.validateAndStoreToken.bind(this);
-  		this.createAxiosInstance = this.createAxiosInstance.bind(this);
-  		this.validToken = this.validToken.bind(this);
+	constructor(props) {
+		super(props);
+
+		const token = localStorage.getItem('userToken');
+
+		this.state = {
+			axiosInstance: null,
+			user: '',
+			password: '',
+			token: Object.is(token, undefined) ? '' : token,
+			isLoggedIn: typeof token === 'string' && token.length > 0
+		};
+
+		this.handleLogin = this.handleLogin.bind(this);
+		this.askForToken = this.askForToken.bind(this);
+		this.validateAndStoreToken = this.validateAndStoreToken.bind(this);
+		this.createAxiosInstance = this.createAxiosInstance.bind(this);
+		this.validToken = this.validToken.bind(this);
 	}
+
+	
 
 	componentDidMount() {
 		if (this.validToken()) {
@@ -48,7 +55,7 @@ class App extends Component {
 		console.log('creating axios instance');
 
 		const axiosIns = axios.create({
-			baseURL: 'http://localhost:8080/api',
+			baseURL: baseServerUrl + '/api',
 			timeout: 1000,
 			headers: { 'authorization': 'Bearer ' + this.state.token }
 		});
@@ -59,7 +66,7 @@ class App extends Component {
 	askForToken() {
 		const _this = this;
 
-		axios.post('http://localhost:8080/user/login', {
+		axios.post(baseServerUrl + '/user/login', {
 			username: this.state.user,
 			password: this.state.password
 		})
@@ -82,7 +89,7 @@ class App extends Component {
 			this.setState({
 				isLoggedIn: true,
 				token: tokenJson['accessToken']
-			 });
+			});
 			localStorage.setItem('userToken', tokenJson['accessToken']);
 			this.createAxiosInstance();
 		} else {
@@ -120,64 +127,67 @@ class App extends Component {
 		/>
 	);
 
-    ProfileUserView = () => (
-        <ProfileUser
-          user={this.state.user}/>
+	ProfileUserView = () => (
+		<ProfileUser
+			user={this.state.user} />
 	);
 
 	AliadosView = () => (
-        <Aliados />
+		<Aliados />
 	);
 
 	ImportProductView = () => (
-        <ImportProduct axios={this.state.axiosInstance} />
+		<ImportProduct axios={this.state.axiosInstance} />
 	);
-	
-	EditProfileView = () =>(
+
+	EditProfileView = () => (
 		<EditProfile
-		handleLogin={this.handleLogin}
+			handleLogin={this.handleLogin}
 		/>
 	);
 
-    RegisterView = () => (
-        <Register
-            handleLogin={this.handleLogin}
-            handleUserChange={this.handleUserChange}
-            handlePasswordChange={this.handlePasswordChange}
-        />
-    );
+	RegisterView = () => (
+		<Register
+			handleLogin={this.handleLogin}
+			handleUserChange={this.handleUserChange}
+			handlePasswordChange={this.handlePasswordChange}
+		/>
+	);
 
-    render() {
-            if(this.state.isLoggedIn){
-                return(
-                    <Router>
-                        <div>
-						<Route exact path="/" component={this.ProfileUserView} />
-                            <Route exact path="/register" component={this.RegisterView} />
+	render() {
+		if (this.state.isLoggedIn) {
+			return (
+				<ServerContext.Provider>
+					<Router>
+						<div>
+							<Route exact path="/" component={this.ProfileUserView} />
+							<Route exact path="/register" component={this.RegisterView} />
 							<Route exact path="/editprofile" component={this.EditProfileView} />
 							<Route exact path="/aliados" component={this.AliadosView} />
 							<Route exact path="/importproduct" component={this.ImportProductView} />
-                        </div>
-                     </Router>
-                     );
-            }else{
-                return(
-                     <Router>
-                        <div>
-
-                            <Route exact path="/" component={this.LoginView} />
-                            <Route exact path="/register" component={this.RegisterView} />
-                            <Route exact path="/profileusr" component={this.ProfileUserView} />
+						</div>
+					</Router>
+				</ServerContext.Provider>
+			);
+		} else {
+			return (
+				<ServerContext.Provider>
+					<Router>
+						<div>
+							<Route exact path="/" component={this.LoginView} />
+							<Route exact path="/register" component={this.RegisterView} />
+							<Route exact path="/profileusr" component={this.ProfileUserView} />
 							<Route exact path="/editprofile" component={this.EditProfileView} />
 							<Route exact path="/aliados" component={this.AliadosView} />
 							<Route exact path="/importproduct" component={this.ImportProductView} />
-                        </div>
-                </Router>
-            );
+						</div>
+					</Router>
+				</ServerContext.Provider>
+			);
 
-      }
+		}
 
-  }
+	}
 }
 
 export default App;

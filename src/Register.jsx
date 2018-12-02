@@ -28,7 +28,9 @@ const theme = createMuiTheme({
   });
 
 export class Register extends React.Component{
-    constructor(props){
+    // static contextType = ServerContext;
+
+    constructor(props, context){
       super(props);
       this.state = {
         name : '',
@@ -42,6 +44,8 @@ export class Register extends React.Component{
 
       this.handleRegister = this.handleRegister.bind(this);
     }
+
+    baseServerUrl = this.context;
 
   handleNameChange = event => {
       this.setState({
@@ -104,7 +108,7 @@ export class Register extends React.Component{
 
     const _this = this;
 
-    axios.post('http://localhost:8080/user/register', form)
+    axios.post(this.baseServerUrl + '/user/register', form)
     .then(function (response) {
       console.log('Response: '+ response.data);
       localStorage.setItem('currentUserName', _this.state.email);

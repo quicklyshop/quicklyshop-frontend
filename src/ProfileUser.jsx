@@ -30,7 +30,10 @@ const theme = createMuiTheme({
 
 export class ProfileUser extends React.Component {
 
-    constructor(props) {
+    // static contextType = ServerContext;
+    
+
+    constructor(props, context) {
         super(props);
         this.state = {userName:props.user , name: ""};
         this.handleTextChange = this.handleTextChange.bind(this);
@@ -44,12 +47,14 @@ export class ProfileUser extends React.Component {
         this.getProfileData();
     }
 
+    baseServerUrl = this.context;
+
     getProfileData = (event) => {
         console.log("Start GET");
 
         const _this = this;
 
-        axios.get('http://localhost:8080/user/'+localStorage.getItem('currentUserName'))
+        axios.get(this.baseServerUrl + '/user/'+localStorage.getItem('currentUserName'))
           .then(function (response) {
             const user = JSON.parse(JSON.stringify(response));
             console.log("This is the good response at profile: "+ user.data.firstname );
